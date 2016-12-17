@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20161217080623) do
     t.string   "title"
     t.text     "description"
     t.string   "main_photo"
+    t.boolean  "agree"
+    t.boolean  "status"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id"

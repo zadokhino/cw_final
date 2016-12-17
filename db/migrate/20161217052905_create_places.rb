@@ -4,6 +4,8 @@ class CreatePlaces < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :description
       t.string :main_photo
+      t.boolean :agree
+      t.boolean :status
       
       t.timestamps
     end

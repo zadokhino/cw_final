@@ -1,8 +1,12 @@
 class PlacesController < ApplicationController
 	before_action :not_authenticate_user, only: [:new]
 	def index
-		@places = Place.paginate(:page => params[:page], :per_page => 20)
 		@categories = Category.all
+	  if params[:query]
+    	@places = Place.where("title LIKE (?)", "%#{params['query']}%").paginate(:page => params[:page], :per_page => 20)
+  	else
+    	@places = Place.all.paginate(:page => params[:page], :per_page => 20)
+  	end
 	end
 
 	def show
@@ -17,10 +21,11 @@ class PlacesController < ApplicationController
 	def create
 		@place = current_user.places.build(places_params)
 		if @place.save
+			flash[:danger] = "Ваше заведение ожидает отправки"
 			redirect_to place_path(@place)
 		else 
 			flash[:danger] = "Ошибка"
-			redirect_to places_path
+			redirect_to :back
 		end
 	end
 
@@ -47,7 +52,7 @@ class PlacesController < ApplicationController
 	private
 
 	def places_params
-		params.require(:place).permit(:title, :description, :main_photo, :category_id)
+		params.require(:place).permit(:title, :description, :main_photo, :category_id, :agree, :status)
 	end	
 
 	def not_authenticate_user
@@ -56,5 +61,4 @@ class PlacesController < ApplicationController
 			redirect_to root_path
 		end
 	end
-
 end

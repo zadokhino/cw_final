@@ -18,6 +18,11 @@
     	<%= f.label :main_photo %>
       <%= f.file_field :main_photo %>
     </div>
+    <div class="col-sm-offset-3 col-sm-6">
+      <%= f.label :agree %>
+      <%= f.check_box :agree, {}, true, nil %>
+    </div>
+    <%= f.hidden_field :status, value: false %>
 
   </div>
   <div class="form-group">

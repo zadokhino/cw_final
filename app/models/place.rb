@@ -10,4 +10,5 @@ class Place < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :category, presence: true
   validates :description, presence: true
+  validates :agree, presence: true
 end
