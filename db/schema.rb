@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217064133) do
+ActiveRecord::Schema.define(version: 20161217080623) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -27,10 +27,14 @@ ActiveRecord::Schema.define(version: 20161217064133) do
     t.string   "title"
     t.text     "description"
     t.string   "main_photo"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
     t.integer  "category_id"
+    t.string   "main_photo_file_name"
+    t.string   "main_photo_content_type"
+    t.integer  "main_photo_file_size"
+    t.datetime "main_photo_updated_at"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["user_id"], name: "index_places_on_user_id"
   end
