@@ -12,7 +12,9 @@ class PlacesController < ApplicationController
 	def show
 		@place = Place.find(params[:id])
 		@rating = Rating.new
-		@ratings = Rating.where(place_id: @place.id)
+		@ratings = Rating.where(place_id: @place.id).order(created_at: :desc)
+		@photo = Photo.new
+		@photos = Photo.where(place_id: @place.id)
 	end
 
 	def new
@@ -32,11 +34,11 @@ class PlacesController < ApplicationController
 	end
 
 	def edit
-		@place = Place.find(params[:place_id])
+		@place = Place.find(params[:id])
 	end
 
 	def update
-		@place = Place.find(params[:place_id])
+		@place = Place.find(params[:id])
 		if @place.update(places_params)
 			redirect_to place_path(@place)
 		else
@@ -46,7 +48,7 @@ class PlacesController < ApplicationController
 	end
 
 	def destroy
-		@place = Place.find(params[:place_id])
+		@place = Place.find(params[:id])
 		@place.destroy
 		redirect_to places_path
 	end

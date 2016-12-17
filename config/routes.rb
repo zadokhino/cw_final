@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :places
   resources :categories
   resources :ratings
+  resources :photos
 end

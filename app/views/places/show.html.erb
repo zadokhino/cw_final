@@ -2,7 +2,10 @@
 <p><%= image_tag @place.main_photo.url(:thumb) %></p>
 <h3>Описание:</h3>
 <h2><%= @place.description %></h2>
-
+<h3>Фотографии:</h3>
+<% @photos.each do |photo| %>
+	<%= image_tag photo.image.url(:thumb) %>
+<% end %>
 <h3>Рейтинг:</h3>
 <p>Общий:<%= @place.overall_rating %></p>
 <p>Кухня\Бар: <%= @place.average_bar_rating %></p>
@@ -16,7 +19,10 @@
 	<p>Кухня\Бар: <%= rating.bar %></p>
 	<p>Обслуживание: <%= rating.service %></p>
 	<p>Обстановка: <%= rating.atmosphere %></p>
+	<br>
 <% end %>
 
 <% provide :button_text, 'Submit review' %>
 <%= render 'ratings/form' %>
+
+<%= render 'photos/form' %>
