@@ -3,8 +3,13 @@ class PlacesController < ApplicationController
 		@places = Place.all
 	end
 
+	def show
+		@place = Place.find(params[:id])
+	end
+
 	def new
 		@place = Place.new
+		@categories = Category.all
 	end
 
 	def create
@@ -40,7 +45,7 @@ class PlacesController < ApplicationController
 	private
 
 	def places_params
-		params.require(:place).permit(:title, :description, :main_photo, :user_id, :category_id)
+		params.require(:place).permit(:title, :description, :main_photo, :category_id)
 	end	
 
 end

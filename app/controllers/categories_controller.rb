@@ -3,10 +3,6 @@ class CategoriesController < ApplicationController
 		@categories = Category.all
 	end
 
-	def show
-		@category = Category.find(params[:category_id])
-	end
-
 	def new
 		@category = Category.new
 	end
@@ -14,7 +10,7 @@ class CategoriesController < ApplicationController
 	def create
 		@category = Category.new(categories_params)
 		if @category.save
-			redirect_to category_path(@category)
+			redirect_to categories_path
 		else 
 			flash[:danger] = "Ошибка"
 			render 'new'
@@ -22,11 +18,11 @@ class CategoriesController < ApplicationController
 	end
 
 	def edit
-		@category = Category.find(params[:category_id])
+		@category = Category.find(params[:id])
 	end
 
 	def update
-		@category = Category.find(params[:category_id])
+		@category = Category.find(params[:id])
 		if @category.update(categories_params)
 			redirect_to category_path(@category)
 		else
@@ -36,7 +32,7 @@ class CategoriesController < ApplicationController
 	end
 
 	def destroy
-		@category = Category.find(params[:category_id])
+		@category = Category.find(params[:id])
 		@category.destroy
 		redirect_to categories_path
 	end
