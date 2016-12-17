@@ -13,6 +13,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
 gem 'will_paginate', '~> 3.1.0'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
   gem 'byebug', platform: :mri

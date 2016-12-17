@@ -5,7 +5,7 @@ class PlacesController < ApplicationController
 	  if params[:query]
     	@places = Place.where("title LIKE (?)", "%#{params['query']}%").paginate(:page => params[:page], :per_page => 20)
   	else
-    	@places = Place.all.paginate(:page => params[:page], :per_page => 20)
+    	@places = Place.where(status: true).paginate(:page => params[:page], :per_page => 20)
   	end
 	end
 
