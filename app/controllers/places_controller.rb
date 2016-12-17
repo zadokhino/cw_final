@@ -18,11 +18,11 @@ class PlacesController < ApplicationController
 	end
 
 	def edit
-		@place = Plcae.find(params[:place_id])
+		@place = Place.find(params[:place_id])
 	end
 
 	def update
-		@place = Plcae.find(params[:place_id])
+		@place = Place.find(params[:place_id])
 		if @place.update(places_params)
 			redirect_to place_path(@place)
 		else
@@ -32,7 +32,7 @@ class PlacesController < ApplicationController
 	end
 
 	def destroy
-		@place = Plcae.find(params[:place_id])
+		@place = Place.find(params[:place_id])
 		@place.destroy
 		redirect_to places_path
 	end
