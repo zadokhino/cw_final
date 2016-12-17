@@ -31,7 +31,18 @@
         <button type="submit" class="btn btn-default">Отправить</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Создать заведение', new_place_path, class: 'btn btn-default navbar-btn' %></li>
+        <% if user_signed_in? %>
+          <p class="navbar-text">
+            Hello, <%= current_user.name %>.
+          </p>
+          <%= link_to 'Создать заведение', new_place_path, class: 'btn btn-default navbar-btn' %>
+          <%= link_to 'Изменить данные', edit_user_registration_path(current_user), class: 'btn btn-default navbar-btn' %>
+          <%= link_to 'Выход', destroy_user_session_path, method: :delete, class: 'btn btn-default navbar-btn' %>
+        <% else %>
+          <%= link_to 'Регистрация', new_user_registration_path, class: 'btn btn-default navbar-btn' %>
+          <%= link_to 'Вход', new_user_session_path, class: 'btn btn-default navbar-btn' %>
+        <% end %>
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
