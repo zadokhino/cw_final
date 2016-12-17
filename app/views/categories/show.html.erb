@@ -3,3 +3,4 @@
 	<h2><%= link_to place.title, place_path(place) %></h2>
 	<p><%= image_tag place.main_photo.url(:thumb) %></p>
 <% end %>
+<%= will_paginate @places %>

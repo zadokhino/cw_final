@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
 	def show
 		@category = Category.find(params[:id])
-		@places = Place.where(category_id: @category)
+		@places = Place.where(category_id: @category).paginate(:page => params[:page], :per_page => 20)
 	end
 
 	def new
