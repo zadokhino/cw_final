@@ -1,0 +1,26 @@
+<%= form_for @rating, html: {class: 'form-horizontal'} do |f| %>
+  <div class="form-group <%= 'has-error' if @rating.errors[:review].any? %>">
+    <div class="col-sm-offset-3 col-sm-6">
+      <%= f.label :review %>
+      <%= f.text_area :review, class: 'form-control' %>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6">
+      <%= f.label :bar %>
+      <%= f.select :bar, options_for_select(1..5) %>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6">
+    	<%= f.label :service %>
+     	<%= f.select :service, options_for_select(1..5) %>
+    </div>
+    <div class="col-sm-offset-3 col-sm-6">
+      <%= f.label :atmosphere %>
+      <%= f.select :atmosphere, options_for_select(1..5) %>
+    </div>
+    <%= f.hidden_field :place_id, value: @place.id %>
+  </div>
+  <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-10">
+          <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+      </div>
+  </div>
+<% end %>

@@ -11,6 +11,8 @@ class PlacesController < ApplicationController
 
 	def show
 		@place = Place.find(params[:id])
+		@rating = Rating.new
+		@ratings = Rating.where(place_id: @place.id)
 	end
 
 	def new
@@ -21,7 +23,7 @@ class PlacesController < ApplicationController
 	def create
 		@place = current_user.places.build(places_params)
 		if @place.save
-			flash[:danger] = "Ваше заведение ожидает отправки"
+			flash[:danger] = "Ваше заведение ожидает проверки"
 			redirect_to place_path(@place)
 		else 
 			flash[:danger] = "Ошибка"
@@ -57,7 +59,7 @@ class PlacesController < ApplicationController
 
 	def not_authenticate_user
 		if !user_signed_in?
-			flash[:danger] = "Вам необходимо зарегестрироваться или войти в систему"
+			flash[:danger] = "Вам необходимо войти в систему"
 			redirect_to root_path
 		end
 	end

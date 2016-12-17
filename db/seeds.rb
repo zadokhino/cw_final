@@ -8,5 +8,5 @@
 admin = User.create(name: 'Admin', email: "admin@example.com", password: 'password')
 category = Category.create(title: 'test')
 30.times do
-	Place.create(title: 'test', category_id: category.id, description: "blablabla", user_id: admin.id)
+	Place.create(title: 'test', category_id: category.id, description: "blablabla", user_id: admin.id, agree: true)
 end

@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  bar: 1.5
-  service: 1.5
-  atmosphere: 1.5
+  bar: 1
+  service: 1
+  atmosphere: 1
+  review: MyText
 
 two:
-  bar: 1.5
-  service: 1.5
-  atmosphere: 1.5
+  bar: 1
+  service: 1
+  atmosphere: 1
+  review: MyText

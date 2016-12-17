@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 	root 'places#index'
   resources :places
   resources :categories
+  resources :ratings
 end
