@@ -1,6 +1,8 @@
 class PlacesController < ApplicationController
+	before_action :not_authenticate_user, only: [:new]
 	def index
 		@places = Place.all
+		@categories = Category.all
 	end
 
 	def show
@@ -47,5 +49,12 @@ class PlacesController < ApplicationController
 	def places_params
 		params.require(:place).permit(:title, :description, :main_photo, :category_id)
 	end	
+
+	def not_authenticate_user
+		if !user_signed_in?
+			flash[:danger] = "Вам необходимо зарегестрироваться или войти в систему"
+			redirect_to root_path
+		end
+	end
 
 end

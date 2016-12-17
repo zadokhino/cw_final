@@ -47,6 +47,14 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name %> fade in">
+    <button class="close" data-dismiss="alert">
+      <i class="glyphicon glyphicon-remove-circle"></i>
+    </button>
+    <strong><%= msg %></strong>
+  </div>
+<% end %>
 
     <%= yield %>
   </body>

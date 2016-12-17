@@ -1,0 +1,5 @@
+<h1><%= @category.title %></h1>
+<% @places.each do |place| %>
+	<h2><%= link_to place.title, place_path(place) %></h2>
+	<p><%= image_tag place.main_photo.url(:thumb) %></p>
+<% end %>

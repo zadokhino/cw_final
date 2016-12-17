@@ -1,4 +1,11 @@
-<h1>all places</h1>
+<h1>All places</h1>
+<h3>
+	Select category:
+	<% @categories.each do |category| %>
+		<%= link_to category.title, category_path(category) %>
+	<% end %>
+</h3>
 <% @places.each do |place| %>
-	<%= place.title %>
+	<h2><%= link_to place.title, place_path(place) %></h2>
+	<p><%= image_tag place.main_photo.url(:thumb) %></p>
 <% end %>
